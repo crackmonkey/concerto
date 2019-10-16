@@ -81,20 +81,43 @@ GEM
       google-api-client (~> 0.9)
       icalendar
       rails
+    concerto_cas_auth (0.1.0)
+      concerto_identity
+      omniauth-cas
+      rails
+    concerto_content_scheduling (0.0.4)
+      ice_cube
+      jquery-timepicker-rails
+      rails
+      recurring_select (~> 1.2.1rc3)
     concerto_docsplit (0.7.5)
+    concerto_emergency (0.9)
+      rails (>= 3.2.9)
     concerto_frontend (0.4.3)
       rails
     concerto_hardware (0.8)
       rails
+    concerto_identity (0.0.5)
+      rails (>= 3.0)
     concerto_iframe (0.1.0)
+      rails
+    concerto_manykinds (0.0.4)
       rails
     concerto_remote_video (1.2)
       rails
       video_info (< 2.6)
+    concerto_shib_auth (0.0.6)
+      concerto_identity
+      omniauth-shibboleth
+      rails
     concerto_simple_rss (1.1)
       encryptor (~> 3.0)
       rails
       ruby-xslt (~> 0.9)
+    concerto_template_scheduling (0.0.7)
+      ice_cube
+      rails
+      recurring_select (~> 1.2.1rc3)
     concerto_weather (0.6)
       rails
     concurrent-ruby (1.1.5)
@@ -144,6 +167,7 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
+    hashie (3.6.0)
     highline (2.0.2)
     hike (1.2.3)
     htmlentities (4.3.4)
@@ -206,6 +230,7 @@ GEM
     multi_json (1.13.1)
     multipart-post (2.1.1)
     mysql2 (0.5.2)
+    nio4r (2.5.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     nprogress-rails (0.2.0.2)
@@ -214,17 +239,28 @@ GEM
     oga (2.15)
       ast
       ruby-ll (~> 2.1)
+    omniauth (1.9.0)
+      hashie (>= 3.4.6, < 3.7.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-cas (1.1.1)
+      addressable (~> 2.3)
+      nokogiri (~> 1.5)
+      omniauth (~> 1.2)
+    omniauth-shibboleth (1.3.0)
+      omniauth (>= 1.0.0)
     open_uri_redirections (0.2.1)
     orm_adapter (0.5.0)
     os (0.9.6)
     parser (2.6.5.0)
       ast (~> 2.4.0)
-    pg (1.1.4)
+    pg (0.21.0)
     public_activity (1.6.4)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
       i18n (>= 0.5.0)
       railties (>= 3.0.0)
+    puma (4.2.1)
+      nio4r (~> 2.0)
     rack (1.6.11)
     rack-mini-profiler (1.1.0)
       rack (>= 1.2.0)
@@ -258,6 +294,12 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    recurring_select (1.2.4)
+      coffee-rails (>= 3.1)
+      ice_cube (>= 0.11)
+      jquery-rails (>= 3.0)
+      rails (>= 3.2)
+      sass-rails (>= 3.1)
     redcarpet (3.3.4)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -360,12 +402,18 @@ DEPENDENCIES
   clockwork
   coffee-rails
   concerto_calendar
+  concerto_cas_auth (>= 0.1.0)
+  concerto_content_scheduling (>= 0.0.4)
   concerto_docsplit
+  concerto_emergency (>= 0.9)
   concerto_frontend
   concerto_hardware
   concerto_iframe
+  concerto_manykinds (>= 0.0.4)
   concerto_remote_video
+  concerto_shib_auth (>= 0.0.6)
   concerto_simple_rss
+  concerto_template_scheduling (>= 0.0.7)
   concerto_weather
   delayed_job_active_record
   devise!
@@ -383,8 +431,9 @@ DEPENDENCIES
   mysql2
   nprogress-rails (~> 0.2.0.2)
   octokit (~> 4.2.0)
-  pg
+  pg (~> 0.18)
   public_activity
+  puma
   rack-mini-profiler
   rails (~> 4.2)
   redcarpet (~> 3.3.2)
